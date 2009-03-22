@@ -22,17 +22,9 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from generic_item import GenericItem
 
-class ContactItem(GenericItem):
+class GroupItem(GenericItem):
     def __init__(self):
         GenericItem.__init__(self)
-        self._pixmap = QPixmap()
 
-    def setContactName(self, name):
+    def setGroupName(self, name):
        self.setText(name)
-
-    def setContactIcon(self, pixmap):
-       self._pixmap = pixmap
-       self.setIcon(QIcon(self._pixmap))
-
-    def pixmap(self):
-       return self._pixmap

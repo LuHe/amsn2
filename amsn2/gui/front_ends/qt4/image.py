@@ -23,7 +23,8 @@ from amsn2.gui import base
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from amsn2.core.views import imageview
-    
+from amsn2.core.theme_manager import aMSNThemeManager    
+
 class Image(QPixmap):
     def __init__(self):
         QPixmap.__init__(self)
@@ -67,7 +68,11 @@ class Image(QPixmap):
     def _loadFromFilename(self, filename):
         QPixmap.load(self, filename)
         self._fileName = filename
-        
+    
+    def _loadFromTheme(self, key):
+        img = aMSNThemeManager().get_value(key)[1]
+        self._loadFromFilename(img)
+ 
     def _loadFromSkin(self, skin):
         pass
     

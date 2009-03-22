@@ -20,19 +20,14 @@
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-from generic_item import GenericItem
 
-class ContactItem(GenericItem):
+class GenericItem(QStandardItem):
     def __init__(self):
-        GenericItem.__init__(self)
-        self._pixmap = QPixmap()
+        QStandardItem.__init__(self)
+        self._UidRole = 40        
 
-    def setContactName(self, name):
-       self.setText(name)
+    def setUid(self, uid):
+        self.setData(QVariant(uid), self._UidRole)
 
-    def setContactIcon(self, pixmap):
-       self._pixmap = pixmap
-       self.setIcon(QIcon(self._pixmap))
-
-    def pixmap(self):
-       return self._pixmap
+    def uid(self):
+        return self.data(self._UidRole).toString()
